@@ -1,0 +1,26 @@
+name: Push Docker Image to GitHub
+
+on:
+  push:
+    branches:
+      - main # Change this to your branch name
+
+jobs:
+  push_to_github:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Login to Docker Hub
+      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+    - name: Pull Docker image
+      run: docker pull yasasjay/my-flask-app:latest
+
+    - name: Tag Docker image
+      run: docker tag yasasjay/my-flask-app:latest docker.pkg.github.com/yasasjay/Docker-Image-Flask-API/my-flask-app:latest
+
+    - name: Push Docker image to GitHub Packages
+      run: docker push docker.pkg.github.com/yasasjay/Docker-Image-Flask-API/my-flask-app:latest
