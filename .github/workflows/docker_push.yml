@@ -20,7 +20,7 @@ jobs:
       run: docker pull yasasjay/my-flask-app:latest
 
     - name: Tag Docker image
-      run: docker tag yasasjay/my-flask-app:latest docker.pkg.github.com/yasasjay/Docker-Image-Flask-API/my-flask-app:latest
+      run: docker tag yasasjay/my-flask-app:latest docker.pkg.github.com/yasasjay/docker-image-flask-for-api/my-flask-app:latest
 
     - name: Push Docker image to GitHub Packages
-      run: docker push docker.pkg.github.com/yasasjay/Docker-Image-Flask-API/my-flask-app:latest
+      run: docker push docker.pkg.github.com/yasasjay/docker-image-flask-for-api/my-flask-app:latest
