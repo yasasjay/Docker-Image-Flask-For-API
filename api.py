@@ -43,4 +43,4 @@ def get_github_data():
         } for row in github_data]
         return jsonify(json_data)
     else:
-        return jsonify({"message": "No data found."})
+        return jsonify({"message": "No data found.!"})
